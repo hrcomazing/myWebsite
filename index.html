@@ -16,155 +16,139 @@
   <header class="hero" id="top">
     <div class="hero-inner grid">
       <p class="eyebrow">Hirsh Ramani · Embedded Systems Portfolio</p>
-      <h1>Software Engineer (Avionics + Embedded) building high-reliability systems and practical AI tools from first principles.</h1>
+      <h1>I design reliable avionics software and practical AI tooling that teams can trust.</h1>
+      <p class="hero-summary">Clear systems thinking, fast debugging, and delivery-minded engineering.</p>
       <ul class="proof-list">
-        <li>C-130T FMS / avionics software (Ada/C, real-time constraints)</li>
-        <li>Systems-level debugging (runtime/linking/concurrency/data buses)</li>
-        <li>Builder projects (self-hosted RAG, automation, local AI stack)</li>
+        <li>Flight software experience in Ada/C</li>
+        <li>Systems debugging across runtime, tooling, and interfaces</li>
+        <li>Applied AI workflows for real engineering teams</li>
       </ul>
       <div class="hero-cta">
         <a class="button" href="#work-with-me">Work With Me</a>
-        <a class="button ghost" href="#evidence">Evidence</a>
+        <a class="button ghost" href="#skills">Explore Skills</a>
       </div>
     </div>
   </header>
 
   <main class="container grid">
     <nav class="section-nav" aria-label="Primary sections">
+      <a href="#skills">Skills</a>
       <a href="#build">Build</a>
       <a href="#understand">Understand</a>
       <a href="#ship">Ship</a>
       <a href="#now">Now</a>
-      <a href="#notes">First-Principles Notes</a>
       <a href="#evidence">Evidence</a>
     </nav>
 
+    <section id="skills">
+      <h2>Core Skills</h2>
+      <p class="section-intro">Pick a skill to spotlight related work and outcomes.</p>
+      <div class="skill-filter card" role="tablist" aria-label="Skill spotlight controls">
+        <button class="chip is-active" data-skill="all" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-skill="avionics" role="tab" aria-selected="false">Avionics</button>
+        <button class="chip" data-skill="debugging" role="tab" aria-selected="false">Debugging</button>
+        <button class="chip" data-skill="ai-tooling" role="tab" aria-selected="false">AI Tooling</button>
+      </div>
+
+      <div class="skill-grid">
+        <article class="card skill-card" data-skill="avionics">
+          <h3>Safety-Critical Avionics</h3>
+          <p>Build deterministic software under strict reliability and timing constraints.</p>
+        </article>
+        <article class="card skill-card" data-skill="debugging">
+          <h3>Systems Debugging</h3>
+          <p>Move from symptoms to root cause with instrumentation and clean models.</p>
+        </article>
+        <article class="card skill-card" data-skill="ai-tooling">
+          <h3>Applied AI Tooling</h3>
+          <p>Create practical automation that supports documentation, search, and execution.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="build">
       <h2>Build</h2>
-      <p class="section-intro">Projects presented as engineering case studies.</p>
+      <p class="section-intro">Selected projects, kept concise and outcome-focused.</p>
 
-      <article class="card case-study">
-        <h3>Case Study Template · Repeatable Engineering Format</h3>
-        <div class="case-grid">
-          <div>
-            <h4>Problem</h4>
-            <p>What was broken, unclear, or failing under operational conditions?</p>
-          </div>
-          <div>
-            <h4>Constraints</h4>
-            <p>Real-time deadlines, hardware interfaces, safety requirements, latency budgets.</p>
-          </div>
-          <div>
-            <h4>System model</h4>
-            <p>Component map + data flow diagram, including interfaces and ownership boundaries.</p>
-          </div>
-          <div>
-            <h4>Decisions</h4>
-            <p>Key tradeoffs, alternatives considered, and why the final approach was selected.</p>
-          </div>
-          <div>
-            <h4>Failure modes</h4>
-            <p>What went wrong, how it was instrumented, and how root causes were isolated.</p>
-          </div>
-          <div>
-            <h4>Outcome</h4>
-            <p>Measured reliability/performance gains, risk reduction, or time saved.</p>
-          </div>
-        </div>
+      <article class="card project" data-skill="avionics">
+        <h3>C-130T Flight Management Software</h3>
+        <p>Contributed to real-time avionics code paths with Ada/C and deterministic scheduling expectations.</p>
       </article>
 
-      <article class="card">
-        <h3>C-130T Flight Management Software Workstream</h3>
-        <p>Real-time avionics software contributions with Ada/C and deterministic scheduling constraints.</p>
+      <article class="card project" data-skill="ai-tooling">
+        <h3>Self-Hosted RAG + Local AI Stack</h3>
+        <p>Built local workflows that make technical knowledge searchable and easier to reuse.</p>
       </article>
 
-      <article class="card">
-        <h3>Self-Hosted RAG &amp; Local AI Tooling Stack</h3>
-        <p>Practical automation workflows for searchable internal knowledge and engineering support tasks.</p>
+      <article class="card project" data-skill="debugging">
+        <h3>Debugging Playbooks for Embedded Teams</h3>
+        <p>Standardized failure triage patterns so issues are diagnosed faster and with less guesswork.</p>
       </article>
     </section>
 
     <section id="understand">
       <h2>Understand</h2>
-      <p class="section-intro">Deep technical writeups that turn implicit debugging intuition into explicit models.</p>
-      <article class="card">
-        <h3>From symptom to signal: systems-level debugging workflow</h3>
-        <p>Tracing runtime, linking, and concurrency interactions across process boundaries and bus interfaces.</p>
-      </article>
-      <article class="card">
-        <h3>Interface contracts in mixed-language embedded systems</h3>
-        <p>How Ada/C integration choices affect observability, determinism, and maintainability.</p>
-      </article>
+      <p class="section-intro">Expandable notes for people who want detail on demand.</p>
+      <div class="accordion-group">
+        <details class="card accordion">
+          <summary>Systems-level debugging workflow</summary>
+          <p>A repeatable path: observe signals, isolate boundaries, instrument assumptions, verify fixes.</p>
+        </details>
+        <details class="card accordion">
+          <summary>Ada/C interface contracts in embedded systems</summary>
+          <p>Contract quality drives determinism, observability, and long-term maintainability.</p>
+        </details>
+        <details class="card accordion">
+          <summary>Concurrency tradeoffs in real-time software</summary>
+          <p>Picking the right tasking model is about predictable timing and manageable failure modes.</p>
+        </details>
+      </div>
     </section>
 
     <section id="ship">
       <h2>Ship</h2>
-      <p class="section-intro">Impact and outcomes, not just activity.</p>
+      <p class="section-intro">How I execute when outcomes matter.</p>
       <div class="metrics">
         <div class="metric card">
-          <p class="metric-label">Reliability focus</p>
-          <p class="metric-value">Safety-critical mindset</p>
+          <p class="metric-label">Approach</p>
+          <p class="metric-value">Model → instrument → verify</p>
         </div>
         <div class="metric card">
-          <p class="metric-label">Execution style</p>
-          <p class="metric-value">Instrument, model, verify</p>
+          <p class="metric-label">Environment</p>
+          <p class="metric-value">Safety-critical and systems-heavy work</p>
         </div>
         <div class="metric card">
-          <p class="metric-label">Delivery</p>
-          <p class="metric-value">Practical systems + usable tools</p>
+          <p class="metric-label">Result</p>
+          <p class="metric-value">Reliable software + useful tools</p>
         </div>
       </div>
     </section>
 
     <section id="now">
       <h2>Now</h2>
-      <p class="section-intro">Current exploration areas.</p>
+      <p class="section-intro">Current focus areas.</p>
       <ul class="mono-list card">
-        <li>Deterministic tasking patterns in embedded runtimes</li>
-        <li>Diagnostics playbooks for 1553 and adjacent bus ecosystems</li>
-        <li>Local-first AI agents for engineering documentation workflows</li>
+        <li>Deterministic tasking patterns</li>
+        <li>Diagnostics for 1553-style bus ecosystems</li>
+        <li>Local-first AI agents for engineering documentation</li>
       </ul>
-    </section>
-
-    <section id="notes">
-      <h2>First-Principles Notes</h2>
-      <p class="section-intro">Concise, diagram-heavy essays for practitioners.</p>
-      <div class="notes-grid">
-        <article class="card">
-          <h3>GNARL vs Ravenscar vs pthreads</h3>
-          <p>Mental model for choosing tasking abstractions under safety and determinism constraints.</p>
-        </article>
-        <article class="card">
-          <h3>Linking/runtime behavior in embedded builds</h3>
-          <p>What actually changes in startup, memory layout, and failure surfaces.</p>
-        </article>
-        <article class="card">
-          <h3>1553 bus debugging playbook</h3>
-          <p>A practical triage strategy with instrumentation checkpoints and fault trees.</p>
-        </article>
-        <article class="card">
-          <h3>Real-time concurrency tradeoffs in avionics</h3>
-          <p>Latency, predictability, and maintainability tradeoffs explained with concrete patterns.</p>
-        </article>
-      </div>
     </section>
 
     <section id="evidence">
       <h2>Evidence</h2>
-      <p class="section-intro">Credibility artifacts and practical proof of work.</p>
+      <p class="section-intro">Proof of work and learning artifacts.</p>
       <div class="card evidence-grid">
         <a href="#" aria-disabled="true">Resume (PDF)</a>
-        <a href="#" aria-disabled="true">Selected code / pseudocode</a>
-        <a href="#" aria-disabled="true">Architecture diagrams</a>
-        <a href="#" aria-disabled="true">Certifications &amp; coursework</a>
-        <a href="#" aria-disabled="true">What I’m learning now · changelog</a>
+        <a href="#" aria-disabled="true">Architecture snapshots</a>
+        <a href="#" aria-disabled="true">Technical notes</a>
+        <a href="#" aria-disabled="true">Certifications + coursework</a>
+        <a href="#" aria-disabled="true">Learning changelog</a>
       </div>
     </section>
 
     <section id="work-with-me" class="cta-section card">
       <h2>Work With Me</h2>
-      <p>I’m interested in embedded systems, avionics software, and high-reliability AI tooling.</p>
-      <p>Open to collaboration on safety-critical or systems-heavy projects.</p>
+      <p>I’m open to embedded systems, avionics, and high-reliability AI tooling collaborations.</p>
       <div class="hero-cta">
         <a class="button" href="mailto:youremail@example.com">Contact</a>
         <a class="button ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -172,5 +156,7 @@
       </div>
     </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
