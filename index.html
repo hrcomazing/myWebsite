@@ -3,34 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hirsh</title>
+  <title>Hirsh | Avionics + Embedded Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <h1>Hirsh Ramani</h1>
-    <p>Engineer, builder, and professional overthinker.</p>
-    <a class="button" href="mailto:youremail@example.com">Contact Me</a>
+  <header class="hero" id="top">
+    <div class="hero-inner grid">
+      <p class="eyebrow">Hirsh Ramani · Embedded Systems Portfolio</p>
+      <h1>Software Engineer (Avionics + Embedded) building high-reliability systems and practical AI tools from first principles.</h1>
+      <ul class="proof-list">
+        <li>C-130T FMS / avionics software (Ada/C, real-time constraints)</li>
+        <li>Systems-level debugging (runtime/linking/concurrency/data buses)</li>
+        <li>Builder projects (self-hosted RAG, automation, local AI stack)</li>
+      </ul>
+      <div class="hero-cta">
+        <a class="button" href="#work-with-me">Work With Me</a>
+        <a class="button ghost" href="#evidence">Evidence</a>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <section>
-      <h2>About</h2>
-      <p>
-        Welcome to my website. This is my corner of the internet where I can
-        share projects, ideas, and anything else I am working on.
-      </p>
+  <main class="container grid">
+    <nav class="section-nav" aria-label="Primary sections">
+      <a href="#build">Build</a>
+      <a href="#understand">Understand</a>
+      <a href="#ship">Ship</a>
+      <a href="#now">Now</a>
+      <a href="#notes">First-Principles Notes</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+
+    <section id="build">
+      <h2>Build</h2>
+      <p class="section-intro">Projects presented as engineering case studies.</p>
+
+      <article class="card case-study">
+        <h3>Case Study Template · Repeatable Engineering Format</h3>
+        <div class="case-grid">
+          <div>
+            <h4>Problem</h4>
+            <p>What was broken, unclear, or failing under operational conditions?</p>
+          </div>
+          <div>
+            <h4>Constraints</h4>
+            <p>Real-time deadlines, hardware interfaces, safety requirements, latency budgets.</p>
+          </div>
+          <div>
+            <h4>System model</h4>
+            <p>Component map + data flow diagram, including interfaces and ownership boundaries.</p>
+          </div>
+          <div>
+            <h4>Decisions</h4>
+            <p>Key tradeoffs, alternatives considered, and why the final approach was selected.</p>
+          </div>
+          <div>
+            <h4>Failure modes</h4>
+            <p>What went wrong, how it was instrumented, and how root causes were isolated.</p>
+          </div>
+          <div>
+            <h4>Outcome</h4>
+            <p>Measured reliability/performance gains, risk reduction, or time saved.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>C-130T Flight Management Software Workstream</h3>
+        <p>Real-time avionics software contributions with Ada/C and deterministic scheduling constraints.</p>
+      </article>
+
+      <article class="card">
+        <h3>Self-Hosted RAG &amp; Local AI Tooling Stack</h3>
+        <p>Practical automation workflows for searchable internal knowledge and engineering support tasks.</p>
+      </article>
     </section>
 
-    <section>
-      <h2>Projects</h2>
-      <div class="card">
-        <h3>Project One</h3>
-        <p>A short description of something cool you built.</p>
+    <section id="understand">
+      <h2>Understand</h2>
+      <p class="section-intro">Deep technical writeups that turn implicit debugging intuition into explicit models.</p>
+      <article class="card">
+        <h3>From symptom to signal: systems-level debugging workflow</h3>
+        <p>Tracing runtime, linking, and concurrency interactions across process boundaries and bus interfaces.</p>
+      </article>
+      <article class="card">
+        <h3>Interface contracts in mixed-language embedded systems</h3>
+        <p>How Ada/C integration choices affect observability, determinism, and maintainability.</p>
+      </article>
+    </section>
+
+    <section id="ship">
+      <h2>Ship</h2>
+      <p class="section-intro">Impact and outcomes, not just activity.</p>
+      <div class="metrics">
+        <div class="metric card">
+          <p class="metric-label">Reliability focus</p>
+          <p class="metric-value">Safety-critical mindset</p>
+        </div>
+        <div class="metric card">
+          <p class="metric-label">Execution style</p>
+          <p class="metric-value">Instrument, model, verify</p>
+        </div>
+        <div class="metric card">
+          <p class="metric-label">Delivery</p>
+          <p class="metric-value">Practical systems + usable tools</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Project Two</h3>
-        <p>Another short description of another cool thing.</p>
+    </section>
+
+    <section id="now">
+      <h2>Now</h2>
+      <p class="section-intro">Current exploration areas.</p>
+      <ul class="mono-list card">
+        <li>Deterministic tasking patterns in embedded runtimes</li>
+        <li>Diagnostics playbooks for 1553 and adjacent bus ecosystems</li>
+        <li>Local-first AI agents for engineering documentation workflows</li>
+      </ul>
+    </section>
+
+    <section id="notes">
+      <h2>First-Principles Notes</h2>
+      <p class="section-intro">Concise, diagram-heavy essays for practitioners.</p>
+      <div class="notes-grid">
+        <article class="card">
+          <h3>GNARL vs Ravenscar vs pthreads</h3>
+          <p>Mental model for choosing tasking abstractions under safety and determinism constraints.</p>
+        </article>
+        <article class="card">
+          <h3>Linking/runtime behavior in embedded builds</h3>
+          <p>What actually changes in startup, memory layout, and failure surfaces.</p>
+        </article>
+        <article class="card">
+          <h3>1553 bus debugging playbook</h3>
+          <p>A practical triage strategy with instrumentation checkpoints and fault trees.</p>
+        </article>
+        <article class="card">
+          <h3>Real-time concurrency tradeoffs in avionics</h3>
+          <p>Latency, predictability, and maintainability tradeoffs explained with concrete patterns.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <p class="section-intro">Credibility artifacts and practical proof of work.</p>
+      <div class="card evidence-grid">
+        <a href="#" aria-disabled="true">Resume (PDF)</a>
+        <a href="#" aria-disabled="true">Selected code / pseudocode</a>
+        <a href="#" aria-disabled="true">Architecture diagrams</a>
+        <a href="#" aria-disabled="true">Certifications &amp; coursework</a>
+        <a href="#" aria-disabled="true">What I’m learning now · changelog</a>
+      </div>
+    </section>
+
+    <section id="work-with-me" class="cta-section card">
+      <h2>Work With Me</h2>
+      <p>I’m interested in embedded systems, avionics software, and high-reliability AI tooling.</p>
+      <p>Open to collaboration on safety-critical or systems-heavy projects.</p>
+      <div class="hero-cta">
+        <a class="button" href="mailto:youremail@example.com">Contact</a>
+        <a class="button ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="button ghost" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </section>
   </main>
