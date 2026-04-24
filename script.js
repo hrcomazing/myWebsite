@@ -188,3 +188,51 @@ const yearNode = document.getElementById("current-year");
 if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
+
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const root = document.documentElement;
+let previousPlaneScroll = window.scrollY;
+
+const updatePlanePosition = () => {
+  if (motionQuery.matches) return;
+
+  const maxScroll = Math.max(root.scrollHeight - window.innerHeight, 1);
+  const currentScroll = window.scrollY;
+  const progress = Math.min(currentScroll / maxScroll, 1);
+  const arc = Math.sin(progress * Math.PI);
+  const x = -18 + progress * 136;
+  const y = 70 - progress * 54 - arc * 7;
+  const angle = -9 + progress * 18;
+  const opacity = 0.46 + arc * 0.28;
+
+  if (Math.abs(currentScroll - previousPlaneScroll) > 1) {
+    root.style.setProperty("--plane-direction", currentScroll > previousPlaneScroll ? "-1" : "1");
+    previousPlaneScroll = currentScroll;
+  }
+
+  root.style.setProperty("--plane-x", `${x}vw`);
+  root.style.setProperty("--plane-y", `${y}vh`);
+  root.style.setProperty("--plane-angle", `${angle}deg`);
+  root.style.setProperty("--plane-opacity", opacity.toFixed(2));
+};
+
+let planeFrame = null;
+
+const schedulePlaneUpdate = () => {
+  if (planeFrame !== null) return;
+
+  planeFrame = window.requestAnimationFrame(() => {
+    planeFrame = null;
+    updatePlanePosition();
+  });
+};
+
+updatePlanePosition();
+window.addEventListener("scroll", schedulePlaneUpdate, { passive: true });
+window.addEventListener("resize", schedulePlaneUpdate);
+
+if (typeof motionQuery.addEventListener === "function") {
+  motionQuery.addEventListener("change", updatePlanePosition);
+} else if (typeof motionQuery.addListener === "function") {
+  motionQuery.addListener(updatePlanePosition);
+}
