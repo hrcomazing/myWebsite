@@ -3,159 +3,392 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hirsh | Avionics + Embedded Engineer</title>
+  <title>Hirsh Ramani | Avionics, Embedded Systems, and Practical AI Tooling</title>
+  <meta
+    name="description"
+    content="Hirsh Ramani is an avionics and embedded systems engineer focused on deterministic software, systems debugging, and practical AI tooling for real engineering work."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero" id="top">
-    <div class="hero-inner grid">
-      <p class="eyebrow">Hirsh Ramani · Embedded Systems Portfolio</p>
-      <h1>I design reliable avionics software and practical AI tooling that teams can trust.</h1>
-      <p class="hero-summary">Clear systems thinking, fast debugging, and delivery-minded engineering.</p>
-      <ul class="proof-list">
-        <li>Flight software experience in Ada/C</li>
-        <li>Systems debugging across runtime, tooling, and interfaces</li>
-        <li>Applied AI workflows for real engineering teams</li>
-      </ul>
-      <div class="hero-cta">
-        <a class="button" href="#work-with-me">Work With Me</a>
-        <a class="button ghost" href="#skills">Explore Skills</a>
+  <div class="page-shell">
+    <div class="background-grid" aria-hidden="true"></div>
+    <div class="background-glow glow-one" aria-hidden="true"></div>
+    <div class="background-glow glow-two" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="#top" aria-label="Hirsh Ramani home">
+          <span class="brand-mark">HR</span>
+          <span class="brand-text">
+            <strong>Hirsh Ramani</strong>
+            <span>Embedded Systems · Avionics · AI Tooling</span>
+          </span>
+        </a>
+
+        <nav class="top-nav" aria-label="Primary">
+          <a href="#capabilities" data-nav-link="capabilities">Capabilities</a>
+          <a href="#work" data-nav-link="work">Selected Work</a>
+          <a href="#depth" data-nav-link="depth">Technical Depth</a>
+          <a href="#approach" data-nav-link="approach">Approach</a>
+          <a href="#evidence" data-nav-link="evidence">Evidence</a>
+          <a href="#contact" data-nav-link="contact">Contact</a>
+        </nav>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container grid">
-    <nav class="section-nav" aria-label="Primary sections">
-      <a href="#skills">Skills</a>
-      <a href="#build">Build</a>
-      <a href="#understand">Understand</a>
-      <a href="#ship">Ship</a>
-      <a href="#now">Now</a>
-      <a href="#evidence">Evidence</a>
-    </nav>
+    <main id="top">
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Reliable software for systems that cannot afford ambiguity</p>
+            <h1>I build avionics and embedded software with the debugging discipline to make complex systems behave.</h1>
+            <p class="hero-lede">
+              Embedded and avionics engineer working across Ada/C flight software, root-cause analysis, and practical AI tooling that helps real engineering teams move faster without losing rigor.
+            </p>
 
-    <section id="skills">
-      <h2>Core Skills</h2>
-      <p class="section-intro">Pick a skill to spotlight related work and outcomes.</p>
-      <div class="skill-filter card" role="tablist" aria-label="Skill spotlight controls">
-        <button class="chip is-active" data-skill="all" role="tab" aria-selected="true">All</button>
-        <button class="chip" data-skill="avionics" role="tab" aria-selected="false">Avionics</button>
-        <button class="chip" data-skill="debugging" role="tab" aria-selected="false">Debugging</button>
-        <button class="chip" data-skill="ai-tooling" role="tab" aria-selected="false">AI Tooling</button>
-      </div>
+            <div class="hero-actions">
+              <a class="button" href="#work">View Selected Work</a>
+              <a class="button secondary" href="#contact">Start a Conversation</a>
+            </div>
 
-      <div class="skill-grid">
-        <article class="card skill-card" data-skill="avionics">
-          <h3>Safety-Critical Avionics</h3>
-          <p>Build deterministic software under strict reliability and timing constraints.</p>
-        </article>
-        <article class="card skill-card" data-skill="debugging">
-          <h3>Systems Debugging</h3>
-          <p>Move from symptoms to root cause with instrumentation and clean models.</p>
-        </article>
-        <article class="card skill-card" data-skill="ai-tooling">
-          <h3>Applied AI Tooling</h3>
-          <p>Create practical automation that supports documentation, search, and execution.</p>
-        </article>
-      </div>
-    </section>
+            <ul class="hero-signals" aria-label="Credibility signals">
+              <li>Flight software experience in Ada/C</li>
+              <li>Systems debugging across interfaces, tooling, and runtime behavior</li>
+              <li>Local-first AI workflows built for engineering use, not demos</li>
+            </ul>
+          </div>
 
-    <section id="build">
-      <h2>Build</h2>
-      <p class="section-intro">Selected projects, kept concise and outcome-focused.</p>
+          <aside class="hero-panel reveal">
+            <div class="panel-stack">
+              <div class="hero-card">
+                <p class="panel-label">Positioning</p>
+                <h2>Embedded systems engineer with a builder’s eye for tooling and a debugger’s eye for truth.</h2>
+                <p>
+                  I care about deterministic behavior, clean interfaces, and tools that reduce cognitive load instead of adding more abstraction.
+                </p>
+              </div>
 
-      <article class="card project" data-skill="avionics">
-        <h3>C-130T Flight Management Software</h3>
-        <p>Contributed to real-time avionics code paths with Ada/C and deterministic scheduling expectations.</p>
-      </article>
+              <div class="hero-card compact">
+                <div>
+                  <p class="panel-label">Best fit</p>
+                  <p class="hero-metric">Avionics, embedded systems, integration-heavy software, and AI-assisted engineering workflows.</p>
+                </div>
+                <div>
+                  <p class="panel-label">Operating style</p>
+                  <p class="hero-metric">Model the system, instrument the edges, isolate the failure mode, verify the fix.</p>
+                </div>
+              </div>
 
-      <article class="card project" data-skill="ai-tooling">
-        <h3>Self-Hosted RAG + Local AI Stack</h3>
-        <p>Built local workflows that make technical knowledge searchable and easier to reuse.</p>
-      </article>
-
-      <article class="card project" data-skill="debugging">
-        <h3>Debugging Playbooks for Embedded Teams</h3>
-        <p>Standardized failure triage patterns so issues are diagnosed faster and with less guesswork.</p>
-      </article>
-    </section>
-
-    <section id="understand">
-      <h2>Understand</h2>
-      <p class="section-intro">Expandable notes for people who want detail on demand.</p>
-      <div class="accordion-group">
-        <details class="card accordion">
-          <summary>Systems-level debugging workflow</summary>
-          <p>A repeatable path: observe signals, isolate boundaries, instrument assumptions, verify fixes.</p>
-        </details>
-        <details class="card accordion">
-          <summary>Ada/C interface contracts in embedded systems</summary>
-          <p>Contract quality drives determinism, observability, and long-term maintainability.</p>
-        </details>
-        <details class="card accordion">
-          <summary>Concurrency tradeoffs in real-time software</summary>
-          <p>Picking the right tasking model is about predictable timing and manageable failure modes.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="ship">
-      <h2>Ship</h2>
-      <p class="section-intro">How I execute when outcomes matter.</p>
-      <div class="metrics">
-        <div class="metric card">
-          <p class="metric-label">Approach</p>
-          <p class="metric-value">Model → instrument → verify</p>
+              <div class="hero-card compact signal-grid">
+                <div>
+                  <span class="signal-value">Ada / C</span>
+                  <span class="signal-label">Deterministic software paths</span>
+                </div>
+                <div>
+                  <span class="signal-value">Root Cause</span>
+                  <span class="signal-label">Debugging over guesswork</span>
+                </div>
+                <div>
+                  <span class="signal-value">AI Workflows</span>
+                  <span class="signal-label">Practical automation for engineers</span>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
-        <div class="metric card">
-          <p class="metric-label">Environment</p>
-          <p class="metric-value">Safety-critical and systems-heavy work</p>
+      </section>
+
+      <section class="trust-band section">
+        <div class="container trust-grid reveal">
+          <div class="section-heading compact-heading">
+            <p class="eyebrow">What I bring</p>
+            <h2>Technical seriousness, clear judgment, and execution that holds up under constraint.</h2>
+          </div>
+          <div class="trust-points">
+            <article class="trust-card">
+              <p class="panel-label">Embedded mindset</p>
+              <p>Designed around timing, interfaces, observability, and failure modes from the start.</p>
+            </article>
+            <article class="trust-card">
+              <p class="panel-label">Debugger’s instinct</p>
+              <p>Comfortable tracing issues across layers until symptoms become evidence and evidence becomes a fix.</p>
+            </article>
+            <article class="trust-card">
+              <p class="panel-label">Useful AI tooling</p>
+              <p>Focused on repeatable workflows that help engineers search, document, and execute with less friction.</p>
+            </article>
+          </div>
         </div>
-        <div class="metric card">
-          <p class="metric-label">Result</p>
-          <p class="metric-value">Reliable software + useful tools</p>
+      </section>
+
+      <section class="section" id="capabilities" data-section="capabilities">
+        <div class="container two-column">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Capabilities</p>
+            <h2>Range that feels coherent because it all starts with systems thinking.</h2>
+            <p>
+              The common thread is not just what I build. It is how I reason: understand the system, reduce ambiguity, and produce something dependable.
+            </p>
+          </div>
+
+          <div class="capability-panel reveal">
+            <div class="tab-list" role="tablist" aria-label="Capability categories">
+              <button class="tab-button is-active" type="button" role="tab" aria-selected="true" aria-controls="capability-content" data-capability="avionics">
+                Avionics
+              </button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="capability-content" data-capability="debugging">
+                Debugging
+              </button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="capability-content" data-capability="tooling">
+                AI Tooling
+              </button>
+            </div>
+
+            <article class="capability-card" id="capability-content" role="tabpanel" tabindex="-1">
+              <div class="capability-topline">
+                <span class="panel-label" id="capability-kicker">Safety-critical engineering</span>
+                <span class="capability-index" id="capability-index">01</span>
+              </div>
+              <h3 id="capability-title">Deterministic avionics software with respect for timing, interfaces, and reliability.</h3>
+              <p id="capability-copy">
+                I am strongest when software has to behave predictably and the cost of ambiguity is real. That means disciplined interfaces, careful tasking, and implementation that respects the system around it.
+              </p>
+              <ul class="detail-list" id="capability-points">
+                <li>Ada/C implementation for embedded and avionics-oriented systems</li>
+                <li>Attention to deterministic behavior, maintainability, and integration boundaries</li>
+                <li>Comfort operating in systems where verification matters as much as velocity</li>
+              </ul>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="now">
-      <h2>Now</h2>
-      <p class="section-intro">Current focus areas.</p>
-      <ul class="mono-list card">
-        <li>Deterministic tasking patterns</li>
-        <li>Diagnostics for 1553-style bus ecosystems</li>
-        <li>Local-first AI agents for engineering documentation</li>
-      </ul>
-    </section>
+      <section class="section" id="work" data-section="work">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Selected Work</p>
+            <h2>Proof framed around engineering thinking, not just feature lists.</h2>
+            <p>
+              These are intentionally written like case studies: context, contribution, and why the work mattered.
+            </p>
+          </div>
 
-    <section id="evidence">
-      <h2>Evidence</h2>
-      <p class="section-intro">Proof of work and learning artifacts.</p>
-      <div class="card evidence-grid">
-        <a href="#" aria-disabled="true">Resume (PDF)</a>
-        <a href="#" aria-disabled="true">Architecture snapshots</a>
-        <a href="#" aria-disabled="true">Technical notes</a>
-        <a href="#" aria-disabled="true">Certifications + coursework</a>
-        <a href="#" aria-disabled="true">Learning changelog</a>
-      </div>
-    </section>
+          <div class="project-grid">
+            <article class="project-card reveal">
+              <div class="project-meta">
+                <span class="panel-label">Avionics Software</span>
+                <span class="project-tag">Ada · C · real-time constraints</span>
+              </div>
+              <h3>C-130T flight management software contribution</h3>
+              <p>
+                Contributed to avionics software in an environment where correctness, predictability, and clean interfaces are non-negotiable.
+              </p>
+              <ul class="detail-list">
+                <li>Worked in Ada/C code paths shaped by deterministic scheduling expectations</li>
+                <li>Built understanding around how software behavior interacts with larger aircraft systems</li>
+                <li>Strengthened instincts for disciplined change-making in reliability-focused environments</li>
+              </ul>
+            </article>
 
-    <section id="work-with-me" class="cta-section card">
-      <h2>Work With Me</h2>
-      <p>I’m open to embedded systems, avionics, and high-reliability AI tooling collaborations.</p>
-      <div class="hero-cta">
-        <a class="button" href="mailto:youremail@example.com">Contact</a>
-        <a class="button ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="button ghost" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+            <article class="project-card reveal">
+              <div class="project-meta">
+                <span class="panel-label">Engineering Tooling</span>
+                <span class="project-tag">Local-first AI · search · reuse</span>
+              </div>
+              <h3>Self-hosted RAG and local AI workflows for technical knowledge</h3>
+              <p>
+                Built practical AI-assisted workflows that make engineering information easier to search, recover, and apply without outsourcing sensitive context.
+              </p>
+              <ul class="detail-list">
+                <li>Designed around usefulness for technical work rather than novelty</li>
+                <li>Focused on retrieval quality, local control, and day-to-day repeatability</li>
+                <li>Treated AI as an engineering interface problem, not a branding exercise</li>
+              </ul>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-meta">
+                <span class="panel-label">Systems Debugging</span>
+                <span class="project-tag">Instrumentation · triage · diagnosis</span>
+              </div>
+              <h3>Reusable debugging playbooks for embedded and integration-heavy teams</h3>
+              <p>
+                Translated troubleshooting into a repeatable process so teams can move from symptoms to verified root cause with less guesswork.
+              </p>
+              <ul class="detail-list">
+                <li>Codified investigation patterns around interfaces, runtime signals, and assumptions</li>
+                <li>Improved scannability and consistency in issue triage</li>
+                <li>Made debugging a transferable method instead of a heroic one-off effort</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="depth" data-section="depth">
+        <div class="container two-column depth-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Technical Depth</p>
+            <h2>For people who want to go one layer deeper, the details are here.</h2>
+            <p>
+              This section is designed to reward curiosity without forcing every visitor through dense technical writing on first pass.
+            </p>
+          </div>
+
+          <div class="depth-panel reveal">
+            <div class="pill-row" role="tablist" aria-label="Technical topics">
+              <button class="pill-button is-active" type="button" role="tab" aria-selected="true" aria-controls="depth-content" data-depth="workflow">
+                Debugging Workflow
+              </button>
+              <button class="pill-button" type="button" role="tab" aria-selected="false" aria-controls="depth-content" data-depth="interfaces">
+                Ada/C Interfaces
+              </button>
+              <button class="pill-button" type="button" role="tab" aria-selected="false" aria-controls="depth-content" data-depth="tooling">
+                Applied AI Tooling
+              </button>
+            </div>
+
+            <article class="depth-card" id="depth-content" role="tabpanel" tabindex="-1">
+              <p class="panel-label" id="depth-label">Repeatable diagnosis</p>
+              <h3 id="depth-title">A debugging workflow built to reduce ambiguity quickly.</h3>
+              <p id="depth-copy">
+                My default debugging pattern is simple: build a model of the system, instrument the boundaries that can falsify that model, isolate the failure mode, then verify the fix under the same conditions that produced the issue.
+              </p>
+              <div class="depth-grid">
+                <div class="depth-point">
+                  <span class="depth-number">01</span>
+                  <p id="depth-point-1">Start with signals, not stories. Symptoms are clues, not conclusions.</p>
+                </div>
+                <div class="depth-point">
+                  <span class="depth-number">02</span>
+                  <p id="depth-point-2">Reduce the search space by checking interfaces, assumptions, and timing boundaries.</p>
+                </div>
+                <div class="depth-point">
+                  <span class="depth-number">03</span>
+                  <p id="depth-point-3">Leave behind better observability so the same class of issue is easier to diagnose next time.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="approach" data-section="approach">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">How I Work</p>
+            <h2>Calm execution for technical work that rewards rigor.</h2>
+            <p>
+              The goal is not to sound intense. It is to be dependable when the environment is complex and the details matter.
+            </p>
+          </div>
+
+          <div class="approach-grid">
+            <article class="approach-card reveal">
+              <span class="step-index">01</span>
+              <h3>Model the system first</h3>
+              <p>Before changing code, I want a clean mental picture of the constraints, interfaces, and likely failure surfaces.</p>
+            </article>
+            <article class="approach-card reveal">
+              <span class="step-index">02</span>
+              <h3>Instrument what matters</h3>
+              <p>I prefer evidence-producing changes over blind iteration, especially in integration-heavy or timing-sensitive environments.</p>
+            </article>
+            <article class="approach-card reveal">
+              <span class="step-index">03</span>
+              <h3>Fix the cause, not just the symptom</h3>
+              <p>Good debugging reduces repeat incidents and leaves behind a clearer system than the one it started with.</p>
+            </article>
+            <article class="approach-card reveal">
+              <span class="step-index">04</span>
+              <h3>Ship with discipline</h3>
+              <p>I like work that can be explained, verified, and maintained by the next person who has to touch it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="evidence" data-section="evidence">
+        <div class="container evidence-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Evidence</p>
+            <h2>Signals of credibility, presented like evidence instead of a loose pile of links.</h2>
+            <p>
+              This section gives a visitor multiple ways to validate depth, seriousness, and fit without making the page feel like a document dump.
+            </p>
+          </div>
+
+          <div class="evidence-grid">
+            <article class="evidence-card reveal">
+              <p class="panel-label">GitHub</p>
+              <h3>Code and active builds</h3>
+              <p>Explore public repositories, experiments, and implementation work.</p>
+              <a class="text-link" href="https://github.com/hrcomazing" target="_blank" rel="noreferrer">github.com/hrcomazing</a>
+            </article>
+
+            <article class="evidence-card reveal">
+              <p class="panel-label">Technical Notes</p>
+              <h3>Depth without clutter</h3>
+              <p>Use the technical depth section above as a guided entry point into how I think about systems, interfaces, and tooling.</p>
+              <a class="text-link" href="#depth">Jump to Technical Depth</a>
+            </article>
+
+            <article class="evidence-card reveal">
+              <p class="panel-label">Resume</p>
+              <h3>Detailed history available directly</h3>
+              <p>For teams evaluating fit, I can share a resume and fuller project context on request.</p>
+              <a class="text-link" href="mailto:hrcomazing@gmail.com?subject=Resume%20request">Request resume by email</a>
+            </article>
+
+            <article class="evidence-card reveal">
+              <p class="panel-label">Current Focus</p>
+              <h3>What I am sharpening now</h3>
+              <ul class="evidence-list">
+                <li>Deterministic tasking patterns and reliability-oriented design</li>
+                <li>Diagnostics for integration-heavy bus and interface ecosystems</li>
+                <li>Local-first AI agents for engineering search and documentation</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact" data-section="contact">
+        <div class="container contact-shell reveal">
+          <div class="contact-copy">
+            <p class="eyebrow">Contact</p>
+            <h2>If you need someone who can think clearly in systems-heavy work, let’s talk.</h2>
+            <p>
+              I’m especially interested in embedded systems, avionics, high-reliability software, and practical AI tooling that supports real technical teams.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <a class="button" href="mailto:hrcomazing@gmail.com">hrcomazing@gmail.com</a>
+            <a class="button secondary" href="https://github.com/hrcomazing" target="_blank" rel="noreferrer">GitHub</a>
+            <p class="contact-note">
+              Recruiter, engineering manager, founder, or technical collaborator: a concise note with your context is enough.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>Hirsh Ramani</p>
+        <p>Avionics · Embedded Systems · Practical AI Tooling</p>
+        <p>&copy; <span id="current-year"></span></p>
       </div>
-    </section>
-  </main>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
