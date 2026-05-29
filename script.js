@@ -191,10 +191,272 @@ if (yearNode) {
 
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const root = document.documentElement;
-let previousPlaneScroll = window.scrollY;
+const aircraftBackground = document.querySelector("[data-aircraft-background]");
+const aircraftAsset = document.querySelector("[data-aircraft-asset]");
+const scrollAircraft = document.querySelector("[data-scroll-aircraft]");
+let previousScrollAircraftY = window.scrollY;
 
-const updatePlanePosition = () => {
-  if (motionQuery.matches) return;
+if (aircraftAsset) {
+  aircraftAsset.addEventListener("error", () => {
+    aircraftAsset.hidden = true;
+  });
+}
+
+const fakeTerminalLines = [
+  {
+    type: "command",
+    text: "tail -f /avionics/fms/diag.log",
+  },
+  {
+    type: "log",
+    time: "14:22:03.118",
+    severity: "INFO",
+    category: "BUS",
+    text: "signal integrity nominal; arinc429 frame gap stable",
+  },
+  {
+    type: "log",
+    time: "14:22:03.642",
+    severity: "INFO",
+    category: "TIMING",
+    text: "timing jitter within tolerance; max observed 0.31 ms",
+  },
+  {
+    type: "command",
+    text: "trace --bus arinc429 --window 500ms",
+  },
+  {
+    type: "log",
+    time: "14:22:04.090",
+    severity: "WARN",
+    category: "ROOT_CAUSE",
+    text: "symptom converted to falsifiable signal",
+    tone: "warn",
+  },
+  {
+    type: "log",
+    time: "14:22:04.214",
+    severity: "INFO",
+    category: "NAV",
+    text: "interface boundary isolated between nav input normalization and FMS handoff",
+  },
+  {
+    type: "command",
+    text: 'rag-query "last known root cause pattern"',
+  },
+  {
+    type: "log",
+    time: "14:22:05.001",
+    severity: "INFO",
+    category: "RAG",
+    text: "retrieval match: previous integration failure pattern",
+  },
+  {
+    type: "log",
+    time: "14:22:05.188",
+    severity: "INFO",
+    category: "AI_ASSIST",
+    text: "candidate hypothesis ranked; engineer review required before change",
+  },
+  {
+    type: "command",
+    text: "verify --fix candidate.patch",
+  },
+  {
+    type: "log",
+    time: "14:22:06.336",
+    severity: "HOLD",
+    category: "VERIFY",
+    text: "candidate fix requires verification against recorded timing window",
+    tone: "warn",
+  },
+  {
+    type: "log",
+    time: "14:22:06.812",
+    severity: "INFO",
+    category: "FMS",
+    text: "deterministic behavior preserved in simulated regression pass",
+  },
+];
+
+class FakeTerminal {
+  constructor(element, lines = fakeTerminalLines) {
+    this.element = element;
+    this.output = element.querySelector("[data-fake-terminal-output]");
+    this.lines = lines;
+    this.prompt = element.dataset.prompt || "hirsh@flight-lab:~$";
+    this.timeouts = [];
+    this.runId = 0;
+  }
+
+  schedule(callback, delay) {
+    const timeout = window.setTimeout(callback, delay);
+    this.timeouts.push(timeout);
+  }
+
+  stop() {
+    this.runId += 1;
+    this.timeouts.forEach((timeout) => window.clearTimeout(timeout));
+    this.timeouts = [];
+  }
+
+  clear() {
+    if (this.output) {
+      this.output.innerHTML = "";
+    }
+  }
+
+  scrollToBottom() {
+    if (this.output) {
+      this.output.scrollTop = this.output.scrollHeight;
+    }
+  }
+
+  createLine(line) {
+    const row = document.createElement("p");
+    row.className = "fake-terminal-line";
+
+    const label = document.createElement("span");
+    const textNode = document.createTextNode("");
+
+    if (line.type === "command") {
+      label.className = "fake-terminal-prompt";
+      label.textContent = this.prompt;
+    } else {
+      label.className = `fake-terminal-time${line.tone === "warn" ? " fake-terminal-warn" : ""}`;
+      label.textContent = line.time;
+
+      const severity = document.createElement("span");
+      severity.className = `fake-terminal-severity${line.tone === "warn" ? " fake-terminal-warn" : ""}`;
+      severity.textContent = line.severity || "INFO";
+
+      const category = document.createElement("span");
+      category.className = "fake-terminal-category";
+      category.textContent = line.category || "DIAG";
+
+      row.append(label, severity, category, textNode);
+      this.output.appendChild(row);
+      this.scrollToBottom();
+
+      return { row, textNode };
+    }
+
+    row.append(label, textNode);
+    this.output.appendChild(row);
+    this.scrollToBottom();
+
+    return { row, textNode };
+  }
+
+  addCursor(row) {
+    const cursor = document.createElement("span");
+    cursor.className = "fake-terminal-cursor";
+    cursor.setAttribute("aria-hidden", "true");
+    row.appendChild(cursor);
+  }
+
+  renderStatic() {
+    this.stop();
+    if (!this.output) return;
+
+    this.clear();
+    this.lines.forEach((line, index) => {
+      const { row, textNode } = this.createLine(line);
+      textNode.textContent = ` ${line.text}`;
+
+      if (index === this.lines.length - 1) {
+        this.addCursor(row);
+      }
+    });
+    this.scrollToBottom();
+  }
+
+  typeText(textNode, text, index, done, runId) {
+    if (runId !== this.runId) return;
+
+    textNode.textContent = ` ${text.slice(0, index)}`;
+    this.scrollToBottom();
+
+    if (index >= text.length) {
+      done();
+      return;
+    }
+
+    this.schedule(() => this.typeText(textNode, text, index + 1, done, runId), 14);
+  }
+
+  streamLine(index, runId) {
+    if (!this.output || runId !== this.runId) return;
+
+    if (index >= this.lines.length) {
+      this.schedule(() => this.start(), 2800);
+      return;
+    }
+
+    const line = this.lines[index];
+    const { row, textNode } = this.createLine(line);
+    const isLast = index === this.lines.length - 1;
+    const showNext = () => {
+      if (isLast) {
+        this.addCursor(row);
+      }
+
+      this.schedule(() => this.streamLine(index + 1, runId), line.type === "command" ? 320 : 560);
+    };
+
+    if (line.type === "command") {
+      this.typeText(textNode, line.text, 0, showNext, runId);
+    } else {
+      this.schedule(() => {
+        textNode.textContent = ` ${line.text}`;
+        this.scrollToBottom();
+        showNext();
+      }, 180);
+    }
+  }
+
+  start() {
+    this.stop();
+    if (!this.output) return;
+
+    if (motionQuery.matches) {
+      this.renderStatic();
+      return;
+    }
+
+    this.clear();
+    const runId = this.runId;
+    this.streamLine(0, runId);
+  }
+}
+
+const fakeTerminals = Array.from(document.querySelectorAll("[data-fake-terminal]")).map(
+  (terminal) => new FakeTerminal(terminal)
+);
+
+fakeTerminals.forEach((terminal) => {
+  terminal.start();
+});
+
+const updateAircraftParallax = () => {
+  if (!aircraftBackground || motionQuery.matches) {
+    root.style.setProperty("--aircraft-parallax-x", "0px");
+    root.style.setProperty("--aircraft-parallax-y", "0px");
+    return;
+  }
+
+  const maxScroll = Math.max(root.scrollHeight - window.innerHeight, 1);
+  const progress = Math.min(window.scrollY / maxScroll, 1);
+  const heroProgress = Math.min(window.scrollY / Math.max(window.innerHeight, 1), 1);
+  const x = Math.sin(progress * Math.PI) * 18;
+  const y = heroProgress * -24;
+
+  root.style.setProperty("--aircraft-parallax-x", `${x.toFixed(2)}px`);
+  root.style.setProperty("--aircraft-parallax-y", `${y.toFixed(2)}px`);
+};
+
+const updateScrollAircraftPosition = () => {
+  if (!scrollAircraft || motionQuery.matches) return;
 
   const maxScroll = Math.max(root.scrollHeight - window.innerHeight, 1);
   const currentScroll = window.scrollY;
@@ -203,36 +465,46 @@ const updatePlanePosition = () => {
   const x = -18 + progress * 136;
   const y = 70 - progress * 54 - arc * 7;
   const angle = -9 + progress * 18;
-  const opacity = 0.46 + arc * 0.28;
+  const opacity = 0.34 + arc * 0.24;
 
-  if (Math.abs(currentScroll - previousPlaneScroll) > 1) {
-    root.style.setProperty("--plane-direction", currentScroll > previousPlaneScroll ? "-1" : "1");
-    previousPlaneScroll = currentScroll;
+  if (Math.abs(currentScroll - previousScrollAircraftY) > 1) {
+    root.style.setProperty("--scroll-aircraft-direction", currentScroll > previousScrollAircraftY ? "-1" : "1");
+    previousScrollAircraftY = currentScroll;
   }
 
-  root.style.setProperty("--plane-x", `${x}vw`);
-  root.style.setProperty("--plane-y", `${y}vh`);
-  root.style.setProperty("--plane-angle", `${angle}deg`);
-  root.style.setProperty("--plane-opacity", opacity.toFixed(2));
+  root.style.setProperty("--scroll-aircraft-x", `${x.toFixed(2)}vw`);
+  root.style.setProperty("--scroll-aircraft-y", `${y.toFixed(2)}vh`);
+  root.style.setProperty("--scroll-aircraft-angle", `${angle.toFixed(2)}deg`);
+  root.style.setProperty("--scroll-aircraft-opacity", opacity.toFixed(2));
 };
 
-let planeFrame = null;
+let aircraftFrame = null;
 
-const schedulePlaneUpdate = () => {
-  if (planeFrame !== null) return;
+const scheduleAircraftUpdate = () => {
+  if (aircraftFrame !== null) return;
 
-  planeFrame = window.requestAnimationFrame(() => {
-    planeFrame = null;
-    updatePlanePosition();
+  aircraftFrame = window.requestAnimationFrame(() => {
+    aircraftFrame = null;
+    updateAircraftParallax();
+    updateScrollAircraftPosition();
   });
 };
 
-updatePlanePosition();
-window.addEventListener("scroll", schedulePlaneUpdate, { passive: true });
-window.addEventListener("resize", schedulePlaneUpdate);
+updateAircraftParallax();
+updateScrollAircraftPosition();
+window.addEventListener("scroll", scheduleAircraftUpdate, { passive: true });
+window.addEventListener("resize", scheduleAircraftUpdate);
 
 if (typeof motionQuery.addEventListener === "function") {
-  motionQuery.addEventListener("change", updatePlanePosition);
+  motionQuery.addEventListener("change", () => {
+    updateAircraftParallax();
+    updateScrollAircraftPosition();
+    fakeTerminals.forEach((terminal) => terminal.start());
+  });
 } else if (typeof motionQuery.addListener === "function") {
-  motionQuery.addListener(updatePlanePosition);
+  motionQuery.addListener(() => {
+    updateAircraftParallax();
+    updateScrollAircraftPosition();
+    fakeTerminals.forEach((terminal) => terminal.start());
+  });
 }

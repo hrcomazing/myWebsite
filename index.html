@@ -17,24 +17,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="page-shell">
-    <div class="background-grid" aria-hidden="true"></div>
-    <div class="background-glow glow-one" aria-hidden="true"></div>
-    <div class="background-glow glow-two" aria-hidden="true"></div>
-    <div class="flight-layer" aria-hidden="true">
-      <div class="scroll-plane">
-        <span class="plane-trail"></span>
-        <img
-          class="plane-mark"
-          src="assets/publicdomainq-airplane2.png"
-          alt=""
-          width="600"
-          height="250"
-          loading="eager"
-          decoding="async"
-        />
+    <div class="page-shell">
+      <div class="background-grid" aria-hidden="true"></div>
+      <div class="background-glow glow-one" aria-hidden="true"></div>
+      <div class="background-glow glow-two" aria-hidden="true"></div>
+      <div class="scroll-aircraft-layer" data-scroll-aircraft aria-hidden="true">
+        <div class="scroll-aircraft">
+          <span class="scroll-aircraft-trail"></span>
+          <img
+            class="scroll-aircraft-mark"
+            src="assets/publicdomainq-airplane2.png"
+            alt=""
+            width="600"
+            height="250"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       </div>
-    </div>
 
     <header class="site-header">
       <div class="container nav-shell">
@@ -59,6 +59,33 @@
 
     <main id="top">
       <section class="hero section">
+        <div class="animated-aircraft-background" data-aircraft-background aria-hidden="true">
+          <div class="aircraft-vector-field">
+            <span class="vector-line vector-line-one"></span>
+            <span class="vector-line vector-line-two"></span>
+            <span class="vector-node vector-node-one"></span>
+            <span class="vector-node vector-node-two"></span>
+          </div>
+          <div class="aircraft-drift">
+            <span class="aircraft-contrail"></span>
+            <svg class="aircraft-fallback" viewBox="0 0 600 250" focusable="false" aria-hidden="true">
+              <path d="M50 132 L250 98 L520 26 L550 44 L352 128 L526 214 L497 226 L252 157 L72 158 Z" />
+              <path d="M226 104 L302 38 L330 42 L294 118 Z" />
+              <path d="M230 154 L314 210 L342 206 L296 140 Z" />
+            </svg>
+            <img
+              class="aircraft-asset"
+              src="assets/publicdomainq-airplane2.png"
+              alt=""
+              width="600"
+              height="250"
+              loading="eager"
+              decoding="async"
+              data-aircraft-asset
+            />
+          </div>
+        </div>
+
         <div class="container hero-grid">
           <div class="hero-copy reveal">
             <p class="eyebrow">Reliable software for systems that cannot afford ambiguity</p>
@@ -72,49 +99,84 @@
               <a class="button secondary" href="#contact">Start a Conversation</a>
             </div>
 
-            <ul class="hero-signals" aria-label="Credibility signals">
-              <li>Flight software experience in Ada/C</li>
-              <li>Systems debugging across interfaces, tooling, and runtime behavior</li>
-              <li>Local-first AI workflows built for engineering use, not demos</li>
+            <ul class="hero-status-chips" aria-label="Core technical signals">
+              <li>Ada</li>
+              <li>C</li>
+              <li>Flight software</li>
+              <li>Root-cause debugging</li>
+              <li>Local AI tooling</li>
             </ul>
           </div>
 
-          <aside class="hero-panel reveal">
-            <div class="panel-stack">
-              <div class="hero-card">
-                <p class="panel-label">Positioning</p>
-                <h2>Embedded systems engineer with a builder’s eye for tooling and a debugger’s eye for truth.</h2>
-                <p>
-                  I care about deterministic behavior, clean interfaces, and tools that reduce cognitive load instead of adding more abstraction.
-                </p>
-              </div>
-
-              <div class="hero-card compact">
-                <div>
-                  <p class="panel-label">Best fit</p>
-                  <p class="hero-metric">Avionics, embedded systems, integration-heavy software, and AI-assisted engineering workflows.</p>
-                </div>
-                <div>
-                  <p class="panel-label">Operating style</p>
-                  <p class="hero-metric">Model the system, instrument the edges, isolate the failure mode, verify the fix.</p>
-                </div>
-              </div>
-
-              <div class="hero-card compact signal-grid">
-                <div>
-                  <span class="signal-value">Ada / C</span>
-                  <span class="signal-label">Deterministic software paths</span>
-                </div>
-                <div>
-                  <span class="signal-value">Root Cause</span>
-                  <span class="signal-label">Debugging over guesswork</span>
-                </div>
-                <div>
-                  <span class="signal-value">AI Workflows</span>
-                  <span class="signal-label">Practical automation for engineers</span>
-                </div>
-              </div>
+          <aside class="hero-panel diagnostic-bay reveal" aria-labelledby="diagnostic-bay-title">
+            <div class="hero-aircraft-visual" aria-hidden="true">
+              <img
+                src="assets/publicdomainq-airplane2.png"
+                alt=""
+                width="600"
+                height="250"
+                loading="eager"
+                decoding="async"
+              />
             </div>
+
+            <div class="diagnostic-header">
+              <p class="panel-label">Live diagnostic bay</p>
+              <h2 id="diagnostic-bay-title">Embedded systems engineer with a builder’s eye for tooling and a debugger’s eye for truth.</h2>
+              <p>
+                I care about deterministic behavior, clean interfaces, and tools that reduce cognitive load instead of adding more abstraction.
+              </p>
+            </div>
+
+            <section class="hero-card fake-terminal" data-fake-terminal aria-labelledby="terminal-title">
+              <div class="fake-terminal-header">
+                <div class="fake-terminal-chrome" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <h3 id="terminal-title">bash aircraft diagnostics</h3>
+                <span class="fake-terminal-node">FMS-LAB-01</span>
+              </div>
+              <div
+                class="fake-terminal-output"
+                data-fake-terminal-output
+                aria-label="Simulated bash diagnostic output"
+              >
+                <p><span class="fake-terminal-prompt">hirsh@flight-lab:~$</span> tail -f /avionics/fms/diag.log</p>
+                <p><span class="fake-terminal-time">14:22:03.118</span> <span class="fake-terminal-severity">INFO</span> <span class="fake-terminal-category">BUS</span> signal integrity nominal; arinc429 frame gap stable</p>
+                <p><span class="fake-terminal-prompt">hirsh@flight-lab:~$</span> trace --bus arinc429 --window 500ms</p>
+                <p><span class="fake-terminal-time">14:22:03.642</span> <span class="fake-terminal-severity">INFO</span> <span class="fake-terminal-category">TIMING</span> timing jitter within tolerance; max observed 0.31 ms</p>
+                <p><span class="fake-terminal-prompt">hirsh@flight-lab:~$</span> rag-query "last known root cause pattern"</p>
+                <p><span class="fake-terminal-time fake-terminal-warn">14:22:04.090</span> <span class="fake-terminal-severity fake-terminal-warn">WARN</span> <span class="fake-terminal-category">ROOT_CAUSE</span> symptom converted to falsifiable signal</p>
+                <p><span class="fake-terminal-prompt">hirsh@flight-lab:~$</span> verify --fix candidate.patch<span class="fake-terminal-cursor" aria-hidden="true"></span></p>
+              </div>
+            </section>
+
+            <section class="hero-card tracking-panel" aria-labelledby="tracking-title">
+              <div>
+                <p class="panel-label">Signal tracking</p>
+                <h3 id="tracking-title">Aircraft system lock</h3>
+              </div>
+              <div class="tracking-grid" aria-label="Compact aircraft signal status">
+                <div>
+                  <span class="signal-label">Bus</span>
+                  <span class="signal-value">ARINC</span>
+                </div>
+                <div>
+                  <span class="signal-label">Link</span>
+                  <span class="signal-value">98.7%</span>
+                </div>
+                <div>
+                  <span class="signal-label">Mode</span>
+                  <span class="signal-value">Triage</span>
+                </div>
+                <div>
+                  <span class="signal-label">Fault</span>
+                  <span class="signal-value amber">Edge</span>
+                </div>
+              </div>
+            </section>
           </aside>
         </div>
       </section>
