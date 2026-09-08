@@ -3318,6 +3318,59 @@ body::after {
   align-items: start;
 }
 
+.depth-layout .section-heading {
+  position: relative;
+  min-height: clamp(31rem, 52vw, 43rem);
+}
+
+.depth-silhouette {
+  position: relative;
+  width: min(70%, 18rem);
+  margin-top: clamp(2rem, 6vw, 4.5rem);
+  margin-inline: auto;
+  perspective: 900px;
+  opacity: 0.9;
+  filter:
+    drop-shadow(0 0 28px rgba(100, 226, 213, 0.2))
+    drop-shadow(0 26px 46px rgba(0, 0, 0, 0.42));
+}
+
+.depth-silhouette::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  width: 68%;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(100, 226, 213, 0.24), transparent 70%);
+  filter: blur(10px);
+  transform: translateX(-50%);
+}
+
+.depth-silhouette img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 50% 58%;
+  animation: silhouette-spin 14s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes silhouette-spin {
+  0% {
+    transform: rotateY(0deg) rotateZ(-1deg);
+  }
+
+  50% {
+    transform: rotateY(180deg) rotateZ(1deg);
+  }
+
+  100% {
+    transform: rotateY(360deg) rotateZ(-1deg);
+  }
+}
+
 .depth-card h3 {
   max-width: 20ch;
   font-size: clamp(2rem, 4vw, 3.8rem);
@@ -3533,6 +3586,15 @@ body::after {
     border-width: 0;
     border-radius: 8px;
     padding-left: clamp(1.2rem, 3vw, 2.5rem);
+  }
+
+  .depth-layout .section-heading {
+    min-height: 0;
+  }
+
+  .depth-silhouette {
+    width: min(56%, 13rem);
+    margin-top: 1.8rem;
   }
 
   .product-stage {
