@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="style.css?v=intro-story-10" />
+  <link rel="stylesheet" href="style.css?v=intro-story-12" />
 </head>
 <body>
   <div class="page-shell">
@@ -415,16 +415,7 @@
             <p>
               A short version of the habits underneath the projects.
             </p>
-            <div class="depth-silhouette" aria-hidden="true">
-              <img
-                src="assets/generated/spinning-silhouette.png"
-                alt=""
-                width="1024"
-                height="1536"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+            <div class="depth-human3d" data-depth-human3d aria-label="Rotating 3D human figure"></div>
           </div>
 
           <div class="depth-panel reveal">
@@ -516,6 +507,15 @@
     </footer>
   </div>
 
-  <script src="script.js?v=intro-story-10"></script>
+  <script src="script.js?v=intro-story-12"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="human3d.js?v=intro-story-12"></script>
 </body>
 </html>
