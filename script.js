@@ -137,6 +137,7 @@ let productScrollRange = 1;
 let motionFilmProgress = 0;
 let motionFilmFrame = null;
 let motionFilmDpr = 1;
+let readoutJumpTimeout = null;
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 const beatProgress = (progress, start, end) => clamp((progress - start) / (end - start));
@@ -744,8 +745,26 @@ const activateCapability = (systemName) => {
   setListItems(capabilityPoints, content.points);
 
   if (readoutLabel && readoutValue) {
+    const hasReadoutChange =
+      readoutLabel.textContent !== content.readoutLabel ||
+      readoutValue.textContent !== content.readoutValue;
+
     readoutLabel.textContent = content.readoutLabel;
     readoutValue.textContent = content.readoutValue;
+
+    if (hasReadoutChange && !motionQuery.matches) {
+      const readout = readoutLabel.closest(".system-readout");
+
+      if (readout) {
+        window.clearTimeout(readoutJumpTimeout);
+        readout.classList.remove("is-jumping");
+        void readout.offsetWidth;
+        readout.classList.add("is-jumping");
+        readoutJumpTimeout = window.setTimeout(() => {
+          readout.classList.remove("is-jumping");
+        }, 280);
+      }
+    }
   }
 };
 
